@@ -150,7 +150,21 @@ void RightTwo() {
 
 /**comment**/
 void Shell(){
-    ShooterVel(-10000);
+    ShooterVel(-8000);
+    CollectorVel(4500);  //shoots two preloads immediately
+    piston.set_value(true);
+    pros::delay(3000);
+
+    CollectorVel(0);
+    ShooterVel(0);
+    Turn(20, 50);
+        do {
+            pros::delay(20);
+        } while (!AtDistanceDriveGoal(5));
+
+    pros::delay(2000);
+
+    piston.set_value(false);
     CollectorVel(-4000);
     Drive(50, 50);
     pros::delay(1000);
@@ -158,23 +172,9 @@ void Shell(){
     CollectorVel(0);
     pros::delay(500);
 
-    Drive(-130, 25);
+    Drive(-100, 25);
     pros::delay(1000);
 
-    
-    Turn(300, 50);
-        do {
-            pros::delay(20);
-        } while (!AtDistanceDriveGoal(5));
-
-    pros::delay(2000);
-
-    CollectorVel(4000);
-    pros::delay(3000);
-
-    ShooterVel(0);
-    CollectorVel(0);
-    Drive(50, 50);
 }
 
 
